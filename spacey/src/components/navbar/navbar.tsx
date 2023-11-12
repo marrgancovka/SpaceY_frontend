@@ -1,32 +1,51 @@
-import {Container, Nav, Navbar, NavDropdown} from 'react-bootstrap'
-import Logo from './spacey_white.png'
+// import React from "react";
+// import spaceY from "./spacey_white.png"
 
-function NavBar() {
-    return (
-      <Navbar expand="lg" className='navbar'>
-        <Container>
-          <Navbar.Brand href="#home"><img src={Logo} alt="SpaceY" /></Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    );
-  }
+// function NavBar() {
+//     return (
+//       <div className="top">
+//       <a href="/starships" className="a">
+//           <div className="top_element">
+//               <img src={spaceY} alt="" className="icon"/>
+//           </div>
+//       </a>
+//   </div>
+//     )
+//   }
   
-  export default NavBar;
+//   export default NavBar;
+
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import logo from './spacey_white.png'
+import './navbar.css'
+
+
+function Navigate() {
+  return (
+    
+    <Navbar expand="lg" className="mynavbar" data-bs-theme="dark" fixed='top'>
+      <Container>
+      <Navbar.Brand href="/starships">
+            <img
+              src={logo}
+              width="100%"
+              height="30"
+              className="d-inline-block align-top"
+              alt="React Bootstrap logo"
+            />
+          </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="/starships">Корабли</Nav.Link>
+            <Nav.Link href="#link">ПримерСсылки</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+}
+
+export default Navigate;
