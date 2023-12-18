@@ -19,7 +19,7 @@ const Details: FC<Props> =(props) =>{
         <div className="body">
         <div className="block">
             <div className="container">
-                <div className="photo"> <img className="image" src="{{ .Image_url }}" alt=""/></div>
+                <div className="photo"> <img className="image" src={item.} alt=""/></div>
                 <div className="text">
                     <div className="title">ОПИСАНИЕ ЗВЁЗДНОГО КОРАБЛЯ</div>
                     <div className="overview">

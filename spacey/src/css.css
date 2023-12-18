@@ -9,6 +9,9 @@ body{
     flex-direction: column;
     font-family: 'Roboto', sans-serif;
 }
+body::-webkit-scrollbar {
+    width: 0px; /* ширина полосы прокрутки */
+}
 /* ------------------top------------ */
 .top{
     background-color: rgb(5,5,5);
@@ -49,6 +52,7 @@ a{
     border-radius: 10px;
     min-height: 100%;
     justify-content: center;
+    min-height: 693px;
     
 }
 .card_container{
@@ -104,8 +108,8 @@ a{
 }
 .search{
     display: flex;
-    margin: 2% 3% 0 2%;
-    justify-content: end;
+    margin: 0% 3% 0 2%;
+    justify-content: center;
     align-items: center;
     
 }
@@ -169,7 +173,7 @@ input::placeholder{
     margin-top: 0%;
 }
 .photo{
-    padding: 0 0 40% 0;
+    padding: 0 0 43% 0;
     position: relative;
     overflow: hidden;
     flex: 0 1 43%;
@@ -218,7 +222,7 @@ input::placeholder{
     border-radius: 5px;
     transition-duration: 0.3s;
 }
-.btn{
+.mybtn{
     display: flex;
     justify-content: center;
     align-items: center;

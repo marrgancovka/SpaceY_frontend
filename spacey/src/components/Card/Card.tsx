@@ -17,7 +17,7 @@ const Card: FC<Props> = (props) => {
     return(
         <div className="card">
                 <a href={"starships/"+props.data.ID} className="image_item">
-                    <img src={image} alt="" className="image"/>
+                    <img src={props.data.Image_url} alt="" className="image"/>
                 </a>
                 <a href="" className="text_item">
                     {props.data.Title}

@@ -32,9 +32,9 @@ const DetailsPage: FC = () => {
     return(
         <div className="body mydetails">
         <div className="block">
-            <Breadcrumb title={ship.Title}/>
+            <Breadcrumb title={ship.Title} id={ship.ID}/>
             <div className="mycontainer">
-                <div className="photo"> <img className="image" src={image} alt=""/></div>
+                <div className="photo"> <img className="image" src={ship.Image_url} alt=""/></div>
                 <div className="text">
                     <div className="title">ОПИСАНИЕ ЗВЁЗДНОГО КОРАБЛЯ</div>
                     <div className="overview">
@@ -54,7 +54,7 @@ const DetailsPage: FC = () => {
                             <span>{ship.Description}</span>
                         </div>
                     </div>
-                    <div className="btn">
+                    <div className="mybtn">
                         <a href="/starships" className="btn_back">Вернуться к списку</a>
                     </div>
                 </div>
