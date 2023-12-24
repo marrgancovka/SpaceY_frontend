@@ -1,27 +1,47 @@
 import React, { FC } from "react";
 import { useState, useEffect } from "react";
 import Card from "../Card/Card";
-import search_img from './search.png'
-import Button from 'react-bootstrap/Button';
+// import search_img from './search.png'
 import Form from 'react-bootstrap/Form';
 import Breadcrumbs from "../Breadcrumb/Breadcrumb";
 import './Body.css'
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { appSet } from "../../store/slices/draft_slice";
+import { RootState } from "../../store/store";
 
 
 const Body: FC = () => {
     const [ships, setShips] = useState<any[]>([])
     const [search, setSearch] = useState('')
+    const dispatch = useDispatch()
+  const token = useSelector((state: RootState) => state.auth.token)
+  const id = useSelector((state: RootState) => state.draft.appId)
+  const app = useSelector((state: RootState) => state.draft.app)
 
+
+
+    const getShips = async () => {
+        try {
+            const resp = await axios.get('api/ships', {headers: {Authorization: `Bearer ${token}`}})
+            setShips(resp.data?.data)
+            dispatch(
+                appSet({
+                        app: false,
+                        appId: resp.data.app
+                    }
+                )
+            ) 
+            
+        } catch (error) {
+            console.log("Ошибка получения данных", error)
+        }
+    }
 
     useEffect(() => {
-        fetch(`api/ships`)
-          .then((response) => response.json())
-          .then((jsonData) => {setShips(jsonData.data)
-            console.log(jsonData.data)
-            console.log(ships)})
-          .catch((error) => console.error('Error fetching data:', error));
+        getShips()
       }
-    ,[]);
+    ,[app]);
 
     const searchHandler = async () => {
         try {
@@ -58,9 +78,9 @@ const Body: FC = () => {
                         console.log(search)
                         }}/>
                     </Form.Group>
-                    <Button variant="light" type="submit" className="btn_submit">
+                    {/* <Button variant="light" type="submit" className="btn_submit">
                         <img src={search_img} alt="" className="search_image"/>
-                    </Button>
+                    </Button> */}
                 </Form>
                 </div>
                 <div className="card_container notFound">
@@ -88,9 +108,9 @@ const Body: FC = () => {
                     console.log(search)
                     }}/>
                 </Form.Group>
-                <Button variant="light" type="submit" className="btn_submit">
+                {/* <Button variant="light" type="submit" className="btn_submit">
                     <img src={search_img} alt="" className="search_image"/>
-                </Button>
+                </Button> */}
             </Form>
             </div>
             <div className="card_container">

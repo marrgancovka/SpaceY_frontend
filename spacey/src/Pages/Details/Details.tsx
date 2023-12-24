@@ -1,26 +1,25 @@
-import React, { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import image from '../../components/Card/1.png'
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import './Details.css'
 
-// interface Ship {
-//     ID: Int16Array
-//     Title: string
-//     Rocket: string
-//     Type: string
-//     Description: string
-//     Image_url: string
-// }
-
+interface Ship {
+    ID: string,
+    Title: string,
+    Image_url: string,
+    Rocket: string,
+    Type: string,
+    Description: string
+}
 
 const DetailsPage: FC = () => {
 
     const {id} = useParams()
-    const [ship, setShip] = useState({})
+    const [ship, setShip] = useState<Ship>({ID: '', Title: '', Image_url: '', Rocket: '', Type: '', Description: ''})
 
 
     useEffect(() => {
+    
         fetch(`/api/ships/${id}`)
           .then((response) => response.json())
           .then((jsonData) => {setShip(jsonData.data)

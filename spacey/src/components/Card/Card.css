@@ -1,0 +1,11 @@
+.btn_add{
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 0 auto 15px auto;
+    padding: 0 30px;
+}
+.btn_add:active{
+    background-color: rgb(233, 233, 233);
+}

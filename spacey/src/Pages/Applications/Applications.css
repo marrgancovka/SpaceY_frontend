@@ -1,0 +1,7 @@
+.marg{
+    margin: 130px 10% 50px 10%;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: 2%;
+}
