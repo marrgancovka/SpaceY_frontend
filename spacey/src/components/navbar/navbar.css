@@ -1,0 +1,27 @@
+.mynavbar{
+    height: 80px;
+    background-color: black;
+    box-shadow: 0 0 150px 20px rgba(105, 105, 105, 0.377);
+}
+.btn_log{
+    background-color: black;
+    color: white;
+    border: solid 1px white;
+    border-radius: 10px;
+}
+.btn_log:active{
+    background-color: rgb(48, 48, 48);
+}
+.link_navbar{
+    color: white;
+    margin-right: 15px;
+}
+.btn_deactive{
+    cursor: not-allowed ;
+}
+.btn_deactive:active{
+    background-color: black;
+}
+.buttons{
+    margin-right: 10px;
+}
