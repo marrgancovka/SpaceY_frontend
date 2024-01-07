@@ -5,7 +5,7 @@ import { RootState } from "../../store/store"
 import './Applications.css'
 import TableOneApp from "../../components/TableOneApp/TableOneApp"
 import { appSet } from "../../store/slices/draft_slice"
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 
 
 const ApplicationsPage:FC = () => {
@@ -14,11 +14,15 @@ const ApplicationsPage:FC = () => {
     const [flights, setFlights] = useState([])
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const location = useLocation()
+    const parts = location.pathname.split('/')
+    const curId = parts[2]
+    console.log(curId)
+    const isNewApp = (idApp==Number(curId))
 
     const getApps = async () => {
         try {
-            console.log(token, idApp)
-            const res = await axios.get(`api/application/${idApp}`, {headers: {"Authorization": `Bearer ${token}`}})
+            const res = await axios.get(`/api/application/${curId}`, {headers: {"Authorization": `Bearer ${token}`}})
             setFlights(res.data.flights)
             
         } catch (error) {
@@ -29,7 +33,7 @@ const ApplicationsPage:FC = () => {
 
     const deleteApp = async () => {
         try {
-            await axios.delete(`api/application/${idApp}`, {headers: {"Authorization": `Bearer ${token}`}})
+            await axios.delete(`/api/application/${idApp}`, {headers: {"Authorization": `Bearer ${token}`}})
             dispatch(appSet({app:false, appId:0}))
             navigate('/starships')
 
@@ -43,7 +47,7 @@ const ApplicationsPage:FC = () => {
             if (flights.length == 0){
                 console.log("Нет выбранных полетов")
             }
-            await axios.put('api/application/client', {"id": idApp, "status": "formated"},{headers: {"Authorization": `Bearer ${token}`}})
+            await axios.put('/api/application/client', {"id": idApp, "status": "formated"},{headers: {"Authorization": `Bearer ${token}`}})
             dispatch(appSet({app:false, appID: 0}))
             navigate('/starships')
         } catch (error) {
@@ -56,11 +60,12 @@ const ApplicationsPage:FC = () => {
     },[idApp])
     return(
         <div className="block marg">
-            <h1 className="app_title">Новая заявка</h1>
+            <h1 className="app_title">Заявка №{curId}</h1>
             <TableOneApp ships={flights}
                         formHandler={formHandler}
                         deleteApp={deleteApp}
                         getApps = {getApps}
+                        isNewApp = {isNewApp}
             />
         </div>
     )

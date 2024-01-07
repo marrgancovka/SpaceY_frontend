@@ -17,6 +17,10 @@ const DetailsPage: FC = () => {
     const {id} = useParams()
     const [ship, setShip] = useState<Ship>({ID: '', Title: '', Image_url: '', Rocket: '', Type: '', Description: ''})
 
+    const breadcrumbsItems = [
+        { label: 'Корабли', link:'/starships' }, // Link to the current page
+        { label: 'Корабли', link:`/starships/${ship.Title}` } // Link to the current page
+      ];
 
     useEffect(() => {
     
@@ -31,7 +35,7 @@ const DetailsPage: FC = () => {
     return(
         <div className="body mydetails">
         <div className="block">
-            <Breadcrumb title={ship.Title} id={ship.ID}/>
+            <Breadcrumb items={breadcrumbsItems} className="lastitem"/>
             <div className="mycontainer">
                 <div className="photo"> <img className="image" src={ship.Image_url} alt=""/></div>
                 <div className="text">

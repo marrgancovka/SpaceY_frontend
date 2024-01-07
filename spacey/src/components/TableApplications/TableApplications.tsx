@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Table } from "react-bootstrap";
 import './TableApplications.css'
-import { useNavigate } from "react-router-dom";
+import OneLineApps from "../OneLineApps/OneLineApps";
 
 interface app {
     ID: number;
@@ -14,39 +14,31 @@ interface app {
 };
 export type Props = {
     apps : app[],
+    role: string
 }
 
-const TableApplications:FC<Props> = ({apps}) => {
-    const navigate = useNavigate()
-    const toApp = (id: number) =>{
-        navigate(`/application/${id}`)
-    }
+const TableApplications:FC<Props> = ({apps, role}) => {
+
+
+
     return(
         <Table className='tableApps'>
                     <thead>
                         <tr>
                             <th style={{ width: '5%' }}>№</th>
-                            <th>Дата создания</th>
+                            { role =="client" && <th>Дата создания</th>}
                             <th>Дата формирования</th>
                             <th>Дата завершения</th>
                             <th>Статус</th>
+                            {role=="admin" && <th>Клиент</th>}
+                            {role=="admin" && <th>Действие</th>}
+                            <th>Открыть</th>
+
                         </tr>
                     </thead>
                     <tbody>
                         {apps.map((item, index) => (
-                            <tr key={item.ID} className='table-row' onClick={()=>toApp(item.ID)}>
-                                <td>{++index}</td>
-                                <td>{item.Date_creation === "0001-01-01T00:00:00Z" ? '-' : item.Date_creation.split('T')[0]}</td>
-                                <td>{item.Date_formation=== "0001-01-01T00:00:00Z" ? '-' : item.Date_formation.split('T')[0]}</td>
-                                <td>{item.Date_end=== "0001-01-01T00:00:00Z" ? '-' : item.Date_end.split('T')[0]}</td>
-                                
-                                <td>
-                                    {item.Status === 'created' ? 'Создана' :
-                                        item.Status === 'formated' ? 'Сформирована' :
-                                        item.Status === 'accepted' ? 'Завершена' :
-                                        item.Status === 'canceled' ? 'Отменена' : '-'}
-                                </td>
-                            </tr>
+                            <OneLineApps item={item} role={role} key={index} index={index}/>
                         ))}
                     </tbody>
                 </Table>

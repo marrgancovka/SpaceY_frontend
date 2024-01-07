@@ -1,10 +1,10 @@
 import React, { FC, useState } from "react";
-import { useEffect } from "react";
 import './Card.css'
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { RootState } from "../../store/store";
 import { appSet } from "../../store/slices/draft_slice";
+import { Link, useNavigate } from "react-router-dom";
 
 
 interface Props {
@@ -15,6 +15,7 @@ const Card: FC<Props> = (props) => {
     const dispatch = useDispatch()
     const token = useSelector((state: RootState) => state.auth.token);
     const id = useSelector((state: RootState) => state.draft.appId);
+    const navigate = useNavigate()
 
 
 
@@ -34,12 +35,12 @@ const Card: FC<Props> = (props) => {
 
     return(
         <div className="card">
-                <a href={"starships/"+props.data.ID} className="image_item">
+                <div onClick={()=>{navigate(`/starships/${props.data.ID}`)}} className="image_item">
                     <img src={props.data.Image_url} alt="" className="image"/>
-                </a>
-                <a href="" className="text_item">
+                </div>
+                <div onClick={()=>{navigate(`/starships/${props.data.ID}`)}} className="text_item">
                     {props.data.Title}
-                </a>
+                </div>
                 <div className="discription">
                     <div className="type">{props.data.Type}</div>
                 </div>

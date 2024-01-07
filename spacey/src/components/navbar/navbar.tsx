@@ -6,7 +6,7 @@ import './navbar.css'
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import {RootState} from '../../store/store'
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import {logoutUser} from '../../store/slices/auth_slices'
 
 
@@ -14,24 +14,34 @@ import {logoutUser} from '../../store/slices/auth_slices'
 function Navigate() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const location = useLocation()
   const is_authenticated = useSelector((state: RootState) => state.auth.is_authenticated);
   const appID = useSelector((state: RootState) => state.draft.appId);
   const role = useSelector((state: RootState) => state.auth.role);
   const token = useSelector((state: RootState) => state.auth.token)
+  const userName = useSelector((state: RootState) => state.auth.username)
   const logout = async () =>{
     try {
-      await axios.get('api/logout', {
+      await axios.get('/api/logout', {
           headers: {"Authorization": `Bearer ${token}`}
       });
+      console.log(1)
       dispatch(
         logoutUser()
       );
+      console.log(1)
+
+      if (!location.pathname.includes("/starships")){
+          navigate('/starships')
+      }
+      console.log(1)
+
       } catch (error) {
-      console.error('Ошибка при авторизации:', error);
+      console.error('Ошибка при выходе:', error);
       }
   }
   const toDraft = () =>{
-    navigate(`/application`)
+    navigate(`/application/${appID}`)
   }
 
   return (
@@ -52,10 +62,11 @@ function Navigate() {
           <Nav className="me-auto">
             <NavLink to="/starships" className="link_navbar">Корабли</NavLink>
             {is_authenticated && role=="client" &&<NavLink to={"/applications"} className="link_navbar" >История заявок</NavLink>}
-            {is_authenticated && role=="admin" &&<NavLink to={"/"} className="link_navbar">Редактировать список</NavLink>}
-            {is_authenticated && role=="admin" &&<NavLink to={"/"} className="link_navbar">Заявки</NavLink>}
+            {is_authenticated && role=="admin" &&<NavLink to={"/starships/list"} className="link_navbar">Редактировать космолеты</NavLink>}
+            {is_authenticated && role=="admin" &&<NavLink to={"/applications"} className="link_navbar">Заявки</NavLink>}
           </Nav>
         </Navbar.Collapse>
+        <div className='my_name'>{userName}</div>
         <div className="buttons">
               {is_authenticated && appID!=0 && <button className="btn_log" onClick={toDraft}>Корзина</button>  }
               {is_authenticated && appID==0 && <button className="btn_log btn_deactive" disabled={true} >Корзина</button>  }
@@ -65,6 +76,7 @@ function Navigate() {
                 ? <button className="btn_log" onClick={logout}>Выйти</button> 
                 : <button className="btn_log" onClick={() => navigate(`/login`, {replace: true})}>Войти</button>}
             </div>
+            
             
       </Container>
     </Navbar>

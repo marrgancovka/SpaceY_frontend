@@ -24,6 +24,7 @@ const LoginPage:FC =() =>{
                 loginUser({
                 token: userData.AccessToken,
                 role: userData.Role,
+                username: userData.Username,
                 })
                 
             );

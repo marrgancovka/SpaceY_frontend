@@ -1,7 +1,9 @@
 .table-row:hover td{
     background-color: rgb(238, 238, 238);
-    cursor: pointer;
 }
 .table-row td {
     transition: background-color 0.3s ease; /* Добавление задержки анимации */
   }
+.mr{
+    margin-right: 10px;
+}

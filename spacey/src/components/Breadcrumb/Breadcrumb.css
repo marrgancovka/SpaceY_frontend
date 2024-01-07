@@ -1,19 +1,25 @@
-.mybreadcrumbs{
-    margin: 1.5%  0 1.5% 3%;
-    display: flex;
-    align-items: center;
+.breadcrumb-link{
+    margin-left: 50px;
+    margin-top: 10px;
+    color:rgb(0, 0, 0)
 }
-.myitem{
-    color: black;
-    font-size: 18px;
-    margin-right: 8px;
-    display: flex;
-    align-items: center;
 
+.breadcrumb-link:hover{
+    color:rgb(37, 37, 37)
 }
-.lastItem{
-    color: rgb(99, 99, 99);
+
+.breadcrumbs{
+    margin-left: 80px;
+    margin-bottom: 1%;
 }
-.itemhome{
-    width: 16px;
+
+.breadcrumb-separator{
+    color: rgb(0, 0, 0);
+}
+
+.breadcrumb-link{
+    margin-left: 3px;
+}
+.lastitem{
+    color: blue;
 }

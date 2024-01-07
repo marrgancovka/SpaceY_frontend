@@ -1,0 +1,11 @@
+.image_list{
+    width: 110px;
+    max-height: 140px;
+    object-fit: cover;
+}
+.mb{
+    margin-bottom: 10px;
+}
+.w90{
+    width: 90px;
+}

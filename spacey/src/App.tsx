@@ -10,7 +10,7 @@ import LoginPage from './Pages/Login/Login.tsx';
 import SignupPage from './Pages/SignUp/SignUp.tsx';
 import ApplicationsPage from './Pages/Applications/Applications.tsx'
 import MyApplicationsPage from './Pages/MyApplcations/MyApplications.tsx';
-import OneApp from './Pages/OneApp/OneApp.tsx';
+import StarshipTablePage from './Pages/StarshipTable/StarshipTable.tsx';
 
 const StartPage: FC = () => {
     return (
@@ -22,9 +22,9 @@ const StartPage: FC = () => {
           <Route path='/starships/:id' element={<DetailsPage/>}/>
           <Route path='/login' element={<LoginPage/>}/>
           <Route path='/signup' element={<SignupPage/>}/>
-          <Route path='/application' element={<ApplicationsPage/>}/>
           <Route path='/applications' element={<MyApplicationsPage/>}/>
-          <Route path='/application/:id' element={<OneApp/>}/>
+          <Route path='/application/:id' element={<ApplicationsPage/>}/>
+          <Route path='/starships/list' element={<StarshipTablePage/>}/>
 
         </Routes>
         </>

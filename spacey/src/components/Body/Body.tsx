@@ -59,12 +59,15 @@ const Body: FC = () => {
         console.log(search)
         searchHandler(event);
     }
+    const breadcrumbsItems = [
+        { label: 'Корабли', link:'' } // Link to the current page
+      ];
     if (ships.length==0){
         return (
             <div className="body">
             <div className="block">
                 <div className="mytop">
-                <Breadcrumbs title="" id=""/>
+                <Breadcrumbs items={breadcrumbsItems}/>
                 <Form className="search" method="GET" role="search" action="/starships" onSubmit={handleFormSubmit}>
                     <Form.Group className="" controlId="formBasicEmail">
                         <Form.Control 
@@ -94,7 +97,7 @@ const Body: FC = () => {
         <div className="body">
         <div className="block">
             <div className="mytop">
-            <Breadcrumbs title="" id=""/>
+            <Breadcrumbs items={breadcrumbsItems}/>
             <Form className="search" method="GET" role="search" action="/starships" onSubmit={handleFormSubmit}>
                 <Form.Group className="" controlId="formBasicEmail">
                     <Form.Control 
