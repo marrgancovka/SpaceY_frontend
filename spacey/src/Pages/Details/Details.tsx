@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import './Details.css'
+import { Link } from "react-router-dom";
 
 interface Ship {
     ID: string,
@@ -58,7 +59,7 @@ const DetailsPage: FC = () => {
                         </div>
                     </div>
                     <div className="mybtn">
-                        <a href="/starships" className="btn_back">Вернуться к списку</a>
+                        <Link to="/starships" className="btn_back">Вернуться к списку</Link>
                     </div>
                 </div>
             </div>

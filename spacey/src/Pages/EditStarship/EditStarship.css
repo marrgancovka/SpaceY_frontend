@@ -1,0 +1,45 @@
+.edit_text{
+    display: flex;
+    flex-direction: column;
+}
+.edit_area{
+    display: flex;
+    flex-direction: row;
+    
+}
+.edit_image{
+    margin-left: 50px;
+}
+.edit_input{
+    border: 1px solid grey;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 18px;
+    min-height: 50px;
+    width: 500px;
+
+}
+.mb-15{
+    margin-bottom: 15px;
+}
+.image_edit{
+    width: 600px;
+    max-height: 700px;
+    object-fit: cover;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.edit_save{
+    width: 200px;
+    margin: 0 auto;
+    background-color: white;
+    border: 1px solid grey;
+    border-radius: 8px;
+    font-size: 18px;
+}
+.edit_save:hover{
+    background-color: rgb(241, 241, 241);
+}
+.edit_save:active{
+    background-color: rgb(216, 216, 216);
+}

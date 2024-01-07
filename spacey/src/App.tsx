@@ -11,6 +11,7 @@ import SignupPage from './Pages/SignUp/SignUp.tsx';
 import ApplicationsPage from './Pages/Applications/Applications.tsx'
 import MyApplicationsPage from './Pages/MyApplcations/MyApplications.tsx';
 import StarshipTablePage from './Pages/StarshipTable/StarshipTable.tsx';
+import EditStarshipPage from './Pages/EditStarship/EditStarship.tsx';
 
 const StartPage: FC = () => {
     return (
@@ -25,6 +26,7 @@ const StartPage: FC = () => {
           <Route path='/applications' element={<MyApplicationsPage/>}/>
           <Route path='/application/:id' element={<ApplicationsPage/>}/>
           <Route path='/starships/list' element={<StarshipTablePage/>}/>
+          <Route path='/starships/edit/:id' element={<EditStarshipPage/>}/>
 
         </Routes>
         </>

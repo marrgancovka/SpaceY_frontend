@@ -14,7 +14,7 @@ export type Props = {
     item : ship,
     index: number,
     deleteShip: (id: number)=>(void)
-    editShip: ()=>(void)
+    editShip: (id: number)=>(void)
 }
 
 const OneLineStarship:FC<Props> = ({item, index, deleteShip, editShip}) => {
@@ -38,7 +38,7 @@ const OneLineStarship:FC<Props> = ({item, index, deleteShip, editShip}) => {
                                 </td>
                                 <td>
                                     <button className="btnTrash mb w90" onClick={()=>deleteShip(item.ID)}>Удалить</button>
-                                    <button className="btnTrash w90 mb" onClick={editShip}>Изменить</button>
+                                    <button className="btnTrash w90 mb" onClick={()=>editShip(item.ID)}>Изменить</button>
                                 </td>
                                 
                             </tr>

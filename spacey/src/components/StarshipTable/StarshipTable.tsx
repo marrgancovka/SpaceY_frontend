@@ -14,7 +14,7 @@ interface ship {
 export type Props = {
     ships : ship[],
     deleteShip: (id: number)=>(void)
-    editShip: ()=>(void)
+    editShip: (id: number)=>(void)
 }
 
 const StarshipTable:FC<Props> = ({ships, deleteShip, editShip}) => {
