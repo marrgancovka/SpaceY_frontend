@@ -17,9 +17,9 @@
     margin-right: 25px;
 }
 .btn_deactive{
-    cursor: not-allowed ;
+    cursor: not-allowed !important;
     color: grey;
-    border: solid 1px grey;
+    border: solid 1px grey !important;
 }
 .btn_deactive:active{
     background-color: black;

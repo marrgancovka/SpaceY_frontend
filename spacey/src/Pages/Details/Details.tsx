@@ -20,7 +20,7 @@ const DetailsPage: FC = () => {
 
     const breadcrumbsItems = [
         { label: 'Корабли', link:'/starships' }, // Link to the current page
-        { label: 'Корабли', link:`/starships/${ship.Title}` } // Link to the current page
+        { label: ship.Title, link:`/starships/${ship.ID}` }
       ];
 
     useEffect(() => {

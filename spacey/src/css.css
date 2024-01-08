@@ -51,7 +51,7 @@ a{
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
     min-height: 100%;
-    justify-content: center;
+    /* justify-content: center; */
     min-height: 693px;
     
 }
@@ -254,4 +254,29 @@ input::placeholder{
     font-size: 16px;
     font-family: 'Roboto regular', sans-serif;
     
+}
+.head_search{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.container_filter{
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.input_search_app{
+    height: 30px;
+    border: 1px solid grey;
+    border-radius: 8px;
+    font-size: 18px;
+    padding: 0 8px;
+    background-color: white;
+    color: rgb(0, 0, 0);
+}
+.mr-8{
+    margin-right: -25px;
 }

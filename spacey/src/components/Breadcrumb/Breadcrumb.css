@@ -1,7 +1,9 @@
 .breadcrumb-link{
     margin-left: 50px;
     margin-top: 10px;
-    color:rgb(0, 0, 0)
+    color:rgb(0, 0, 0);
+    font-size: 18px;
+    
 }
 
 .breadcrumb-link:hover{
@@ -11,10 +13,13 @@
 .breadcrumbs{
     margin-left: 80px;
     margin-bottom: 1%;
+    margin-top: 2%;
+    width: 100%;
 }
 
 .breadcrumb-separator{
     color: rgb(0, 0, 0);
+    font-size: 18px;
 }
 
 .breadcrumb-link{

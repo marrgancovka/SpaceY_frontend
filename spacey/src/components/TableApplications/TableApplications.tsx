@@ -9,15 +9,16 @@ interface app {
     Date_creation: string;
     Date_formation: string;
     Date_end: string;
-    Id_user: number,
-    Id_admin: number,
+    User: string,
+    Admin: string,
 };
 export type Props = {
     apps : app[],
-    role: string
+    role: string,
+    getApps: ()=>(void)
 }
 
-const TableApplications:FC<Props> = ({apps, role}) => {
+const TableApplications:FC<Props> = ({apps, role, getApps}) => {
 
 
 
@@ -31,6 +32,7 @@ const TableApplications:FC<Props> = ({apps, role}) => {
                             <th>Дата завершения</th>
                             <th>Статус</th>
                             {role=="admin" && <th>Клиент</th>}
+                            {role=="admin" && <th>Модератор</th>}
                             {role=="admin" && <th>Действие</th>}
                             <th>Открыть</th>
 
@@ -38,7 +40,7 @@ const TableApplications:FC<Props> = ({apps, role}) => {
                     </thead>
                     <tbody>
                         {apps.map((item, index) => (
-                            <OneLineApps item={item} role={role} key={index} index={index}/>
+                            <OneLineApps item={item} role={role} key={index} index={index} getApps={getApps}/>
                         ))}
                     </tbody>
                 </Table>

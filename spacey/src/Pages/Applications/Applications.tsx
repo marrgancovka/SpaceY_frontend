@@ -6,6 +6,7 @@ import './Applications.css'
 import TableOneApp from "../../components/TableOneApp/TableOneApp"
 import { appSet } from "../../store/slices/draft_slice"
 import { useLocation, useNavigate } from "react-router-dom"
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb"
 
 
 const ApplicationsPage:FC = () => {
@@ -19,6 +20,12 @@ const ApplicationsPage:FC = () => {
     const curId = parts[2]
     console.log(curId)
     const isNewApp = (idApp==Number(curId))
+    
+    let breadcrumbsItems = [
+        { label: 'Корабли', link:'/starships' }, // Link to the current page
+        { label: 'Заявки', link:`/applications` },
+        { label: `Заявка №${curId}`, link:`/application/${curId}` },
+      ];
 
     const getApps = async () => {
         try {
@@ -60,6 +67,7 @@ const ApplicationsPage:FC = () => {
     },[idApp])
     return(
         <div className="block marg">
+            <Breadcrumb items={breadcrumbsItems} className="lastitem"/>
             <h1 className="app_title">Заявка №{curId}</h1>
             <TableOneApp ships={flights}
                         formHandler={formHandler}

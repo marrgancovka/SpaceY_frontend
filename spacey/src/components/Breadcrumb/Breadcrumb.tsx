@@ -17,7 +17,7 @@ const Breadcrumbs: FC<Props> = ({items, className}) => {
     <div className={`breadcrumbs ${className || ''}`}>
         {items.map((item, index) => (
         <React.Fragment key={item.link}>
-          {index > 0 && <span className="breadcrumb-separator"> / </span>}
+          {index > 0 && <span className="breadcrumb-separator"> {'>'} </span>}
           <Link to={item.link} className="breadcrumb-link">
             {item.label}
           </Link>

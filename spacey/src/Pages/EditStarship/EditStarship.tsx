@@ -4,6 +4,7 @@ import {  useSelector } from "react-redux"
 import { RootState } from "../../store/store"
 import {  useLocation } from "react-router-dom"
 import './EditStarship.css'
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb"
 
 interface ship {
     ID: number;
@@ -28,7 +29,12 @@ const EditStarshipPage:FC = () => {
     const location = useLocation()
     const parts = location.pathname.split('/')
     const curId = parts[3]
-
+    const [isSave, setIsSave] = useState(true)
+    let breadcrumbsItems = [
+        { label: 'Корабли', link:'/starships' }, // Link to the current page
+        { label: 'Корабли таблицей', link:`/starships/list` },
+        { label: `Редактировать корабль №${curId}`, link:`/starships/edit/${curId}` },
+      ];
 
 
     const getShip = async () => {
@@ -52,7 +58,7 @@ const EditStarshipPage:FC = () => {
                 
             }
             await axios.put('/api/ships', {"id": Number(curId), "title": ship.Title, "rocket": ship.Rocket, "type": ship.Type, "description": ship.Description, "image_url": "", "is_delete": false},{headers: {"Authorization": `Bearer ${token}`}})
-
+            setIsSave(true)
             
         } catch (error) {
             console.log("Ошибка в изменении данных о космолете", error)
@@ -76,6 +82,7 @@ const EditStarshipPage:FC = () => {
             ...ship,
             Image_url: event.target.files[0]
         })
+        setIsSave(false)
     }
 
     useEffect(() => {
@@ -83,6 +90,7 @@ const EditStarshipPage:FC = () => {
     },[])
     return(
         <div className="block marg">
+            <Breadcrumb items={breadcrumbsItems} className="lastitem"/>
             <h1 className="app_title">Редактировать космолет</h1>
             <div className="edit_area">
                 <div className="edit_text">
@@ -91,28 +99,33 @@ const EditStarshipPage:FC = () => {
                             ...ship,
                             Title: event.target.value,
                         })
+                        setIsSave(false)
                     }}/>         
                     <input type="text" value={ship?.Rocket} placeholder="Введите название ракеты-носителя" className="edit_input mb-15" onChange={(event)=>{
                         setShip({
                             ...ship,
                             Rocket: event.target.value,
                         })
+                        setIsSave(false)
                     }}/>         
                     <input type="text" value={ship?.Type} placeholder="Введите тип космолета" className="edit_input mb-15" onChange={(event)=>{
                         setShip({
                             ...ship,
                             Type: event.target.value,
                         })
+                        setIsSave(false)
                     }}/>       
                     <textarea name="" id="" cols={30} rows={10} className="edit_input mb-15" value={ship?.Description} placeholder="Введите описание " onChange={(event)=>{
                         setShip({
                             ...ship,
                             Description: event.target.value,
                         })
+                        setIsSave(false)
                     }}>{ship?.Description}</textarea>
                     <label>Выбрать новое изображение</label>
-                    <input type="file" className="mb-15" onChange={(event)=>saveImage(event)}/>
-                    <button className="edit_save" onClick={saveEdit}>Сохранить</button> 
+                    <input type="file" className="mb-15" onChange={(event)=>saveImage(event)} accept=".jpg, .jpeg, .png"/>
+                    { !isSave && <button className="edit_save" onClick={saveEdit}>Сохранить</button> }
+                    { isSave && <div className="isSave">Сохранить</div> }
                 </div>
                 <div className="edit_image">
                     <img className="image_edit" src={img} alt="" />

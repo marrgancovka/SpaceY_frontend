@@ -30,16 +30,28 @@
     overflow: hidden;
 }
 .edit_save{
-    width: 200px;
+    width: auto;
     margin: 0 auto;
     background-color: white;
     border: 1px solid grey;
     border-radius: 8px;
     font-size: 18px;
+    padding: 0 20px;
 }
 .edit_save:hover{
     background-color: rgb(241, 241, 241);
 }
 .edit_save:active{
     background-color: rgb(216, 216, 216);
+}
+.isSave{
+    cursor:not-allowed;
+    width: auto;
+    margin: 0 auto;
+    background-color: white;
+    border: 1px solid grey;
+    border-radius: 8px;
+    font-size: 18px;
+    color: grey;
+    padding: 0 20px;
 }
