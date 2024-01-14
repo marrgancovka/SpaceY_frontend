@@ -68,10 +68,10 @@ const MyApplicationsPage:FC = () => {
     }
 
     useEffect(() => {
-        getApps()
         if (role=="client"){
             clean()
         }
+        getApps()
     },[])
     return(
         <div className="block marg">
