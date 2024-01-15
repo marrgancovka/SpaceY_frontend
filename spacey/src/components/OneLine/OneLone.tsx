@@ -1,6 +1,4 @@
 import { FC, useEffect, useState } from "react"
-import DatePicker from 'react-datepicker'
-import { parseISO } from "date-fns";
 
 
 interface flight {
@@ -59,7 +57,7 @@ const OneLine:FC<Props> = ({ship, cosmodroms, index, deleteShip, saveShip, isNew
                             <td>
                             <select
                             value={cosmBegin}
-                            onChange={(event)=>setCosmBegin(event.target.value)}
+                            onChange={(event)=>setCosmBegin(Number(event.target.value))}
                             >
                             <option value="" hidden >
                             {cosmBegin}
@@ -75,7 +73,7 @@ const OneLine:FC<Props> = ({ship, cosmodroms, index, deleteShip, saveShip, isNew
                             <td>
                             <select
                             value={cosmEnd}
-                            onChange={(event)=>{setCosmEnd(event.target.value)
+                            onChange={(event)=>{setCosmEnd(Number(event.target.value))
                             console.log(event.target.value)
                             }}
                             >

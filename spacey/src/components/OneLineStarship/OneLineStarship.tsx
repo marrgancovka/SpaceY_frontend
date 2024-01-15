@@ -18,8 +18,6 @@ export type Props = {
 }
 
 const OneLineStarship:FC<Props> = ({item, index, deleteShip, editShip}) => {
-    // const token = useSelector((state: RootState) => state.auth.token);
-
 
     useEffect(()=>{
 

@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { Table } from "react-bootstrap";
 import OneLineStarship from "../OneLineStarship/OneLineStarship";
-import { useNavigate } from "react-router-dom";
 
 interface ship {
     ID: number;

@@ -64,23 +64,22 @@ const EditStarshipPage:FC = () => {
             console.log("Ошибка в изменении данных о космолете", error)
         }
     }
-    const saveImage =  (event) => {
-        console.log(event.target.files[0])
-        const file = event.target.files[0]
+    const saveImage =  (event:  React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0]
         setShip({
             ...ship,
-            Image_url: file,
+            Image_url: String(file),
         })
         if (file) {
             const reader = new FileReader();
             reader.onload = function (e) {
-              setImg(e.target.result)
+              setImg(String(e?.target?.result))
             };
             reader.readAsDataURL(file);
           }
         setShip({
             ...ship,
-            Image_url: event.target.files[0]
+            Image_url: String(event.target.files?.[0])
         })
         setIsSave(false)
     }

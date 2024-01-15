@@ -23,9 +23,7 @@ export type Props = {
 
 const OneLineApps:FC<Props> = ({item,role, getApps}) => {
     const [date, setDate] = useState(item.Date_end)
-    const [admin, setAdmin] = useState(item.Admin)
     const token = useSelector((state: RootState) => state.auth.token);
-    const name = useSelector((state: RootState) => state.auth.username);
 
 
     const navigate = useNavigate()
