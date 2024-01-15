@@ -7,19 +7,29 @@ import { setDate, setDateEnd, setName, setStatus } from "../../store/slices/sear
 import { Form } from "react-bootstrap"
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb"
 
+interface app {
+    ID: number;
+    Status: string;
+    Date_creation: string;
+    Date_formation: string;
+    Date_end: string;
+    User: string,
+    Admin: string,
+};
 
 const MyApplicationsPage:FC = () => {
     const token = useSelector((state: RootState) => state.auth.token);
     const role = useSelector((state: RootState) => state.auth.role);
     const idApp = useSelector((state: RootState) => state.draft.appId);
-    const [apps, setApps] = useState([])
+    const [apps, setApps] = useState<app[]>([])
+    const [appsView, setAppsView] = useState<app[]>([])
     const dispatch = useDispatch()
-  const search_name = useSelector((state: RootState) => state.sears_app.searchName)
-  const search_date_start = useSelector((state: RootState) => state.sears_app.startDateTime)
-  const search_date_end = useSelector((state: RootState) => state.sears_app.endDateTime)
-  const search_status = useSelector((state: RootState) => state.sears_app.selectedStatus)
-  const breadcrumbsItems = [
-    { label: 'Корабли', link:'/starships' }, // Link to the current page
+    const search_name = useSelector((state: RootState) => state.sears_app.searchName)
+    const search_date_start = useSelector((state: RootState) => state.sears_app.startDateTime)
+    const search_date_end = useSelector((state: RootState) => state.sears_app.endDateTime)
+    const search_status = useSelector((state: RootState) => state.sears_app.selectedStatus)
+    const breadcrumbsItems = [
+    { label: 'Корабли', link:'/starships' }, 
     { label: 'Заявки', link:`/applications` }
   ];
 
@@ -30,33 +40,30 @@ const MyApplicationsPage:FC = () => {
             console.log(token, idApp)
             const resp = await axios.get(`/api/applications?status=${search_status}&date=${search_date_start}&date_end=${search_date_end}`, {headers: {"Authorization": `Bearer ${token}`}})
             setApps(resp.data.data)
-            console.log(resp.data.data)
-            
+            setAppsView(resp.data.data)
         } catch (error) {
             console.log("Ошибка в получении заявок", error)
         }
     }
     const filterApps = async () => {
         try {
-            console.log(token, idApp)
             const resp = await axios.get(`/api/applications?status=${search_status}&date=${search_date_start}&date_end=${search_date_end}`, {headers: {"Authorization": `Bearer ${token}`}})
-            if (search_name!=''){
-                filterClient(event)
-            } else {
-                setApps(resp.data.data)
-            }
+            setApps(resp.data.data)
+            setAppsView(resp.data.data)
+            console.log(resp.data.data)
+            filterClient(search_name)
             
         } catch (error) {
             console.log("Ошибка в получении заявок", error)
         }
     }
-    const filterClient = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault()
-        if (search_name!=''){
-            const filteredApps = apps.filter(app => app.User.includes(search_name));
-            setApps(filteredApps)
+    const filterClient = (name: string) => {
+        if (name!=''){
+            const filteredApps = apps.filter(app => app.User.toLocaleLowerCase().includes(name.toLocaleLowerCase()));
+            setAppsView(filteredApps)
+            console.log(filteredApps)
         } else {
-            getApps()
+            setAppsView(apps)
         }
     }
     const clean = () =>  {
@@ -64,7 +71,6 @@ const MyApplicationsPage:FC = () => {
         dispatch(setDateEnd(''))
         dispatch(setName(''))
         dispatch(setStatus(''))
-        getApps()
     }
 
     useEffect(() => {
@@ -72,20 +78,33 @@ const MyApplicationsPage:FC = () => {
             clean()
         }
         getApps()
+        const intervalId = setInterval(() => {
+            getApps();
+        }, 3000); // 5000 миллисекунд (5 секунд) - можете установить свое значение
+    
+        // Очистка интервала при размонтировании компонента
+        return () => clearInterval(intervalId);
+        console.log('useEffect')
     },[])
+    useEffect(()=>{
+        filterClient(search_name)
+    },[apps])
     return(
         <div className="body">
         <div className="block mrg-2">
             <Breadcrumb items={breadcrumbsItems} className="lastitem"/>
             <h1 className="app_title">Заявки</h1>
             { role == "admin" && <div className="container_filter">
-                <Form onSubmit={(event)=>filterClient(event)} className="name_client">
+                <Form onSubmit={(e)=>e.preventDefault()} className="name_client">
                 <input
                 className="input_search_app input_name"
                     type="text"
                     placeholder="Поиск по имени клиента"
                     value={search_name}
-                    onChange={(e) => {dispatch(setName(e.target.value))}}
+                    onChange={(e) => {dispatch(setName(e.target.value))
+                        console.log(search_name, e.target.value)
+                        filterClient(e.target.value)
+                    }}
                     
                 />
                 </Form>
@@ -120,7 +139,7 @@ const MyApplicationsPage:FC = () => {
                 <button className="btnTrash" style={{marginBottom: "10px"}} onClick={clean}>Очистить</button>
                 </div>
             </div>}
-            <TableApplications apps={apps} role={role} getApps={getApps}/>
+            <TableApplications apps={appsView} role={role} getApps={getApps}/>
         </div>
         </div>
     )

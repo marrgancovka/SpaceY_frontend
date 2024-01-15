@@ -59,7 +59,7 @@ const OneLineApps:FC<Props> = ({item,role, getApps}) => {
     }
 
     useEffect(()=>{
-        console.log(item)
+        
     }
     ,[item])
 
