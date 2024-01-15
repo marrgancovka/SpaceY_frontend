@@ -21,7 +21,11 @@ const Login:FC <LoginProps> = ({password, username, setPassword, setUsername, su
                 <input type="text"  onChange={((event) => setUsername(event.target.value))} placeholder="Имя пользователя" value={username} className="my_items"/>
                 <input type="password" onChange={((event) => setPassword(event.target.value))} placeholder="Пароль" value={password} className="my_items"/>
                 <button className="btn_login" type="submit">Войти</button>
-                <div className="navigate" onClick={()=>navigaye('/signup')}>Зарегистрироваться</div>
+                <div>
+                    <span className="navigate" style={{color: 'grey'}}>Еще нет аккаунта? </span>
+                    <span className="navigate" onClick={()=>navigaye('/signup')}> Зарегистрироваться</span>
+                </div>
+                
             </Form>
         </>
     )

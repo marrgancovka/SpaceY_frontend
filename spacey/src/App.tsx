@@ -16,8 +16,9 @@ import EditStarshipPage from './Pages/EditStarship/EditStarship.tsx';
 const StartPage: FC = () => {
     return (
       <BrowserRouter>
+      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <Navigate/>
-        <>
+        <div style={{ flex: '1 0 100%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
         <Routes>
           <Route path='/starships' element={<StarshipsPage/>}/>
           <Route path='/starships/:id' element={<DetailsPage/>}/>
@@ -29,8 +30,9 @@ const StartPage: FC = () => {
           <Route path='/starships/edit/:id' element={<EditStarshipPage/>}/>
 
         </Routes>
-        </>
+        </div>
         <Footer/>
+      </div>
   </BrowserRouter>
     )
 }

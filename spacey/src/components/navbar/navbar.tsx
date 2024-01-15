@@ -49,7 +49,7 @@ function Navigate() {
     </div>
     <div className="nav">
         <Link to="/starships" className="link_navbar">Корабли</Link>
-        {is_authenticated && role=="client" &&<Link to={"/applications"} className="link_navbar" >История заявок</Link>}
+        {is_authenticated && role=="client" &&<Link to={"/applications"} className="link_navbar" >Мои заявки</Link>}
         {is_authenticated && role=="admin" &&<Link to={"/applications"} className="link_navbar">Заявки</Link>}
         {is_authenticated && role=="admin" &&<Link to={"/starships/list"} className="link_navbar" style={{ lineHeight: 1 }}>Редактировать космолеты</Link>}
         

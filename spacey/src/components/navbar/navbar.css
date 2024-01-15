@@ -1,62 +1,3 @@
-/* .mynavbar{
-    height: 80px;
-    background-color: black;
-    box-shadow: 0 0 150px 20px rgba(105, 105, 105, 0.377);
-}
-.btn_log{
-    background-color: black;
-    color: white;
-    border: solid 1px white;
-    border-radius: 10px;
-}
-.btn_log:active{
-    background-color: rgb(48, 48, 48);
-}
-.link_navbar{
-    color: white;
-    margin-right: 25px;
-}
-.btn_deactive{
-    cursor: not-allowed !important;
-    color: grey;
-    border: solid 1px grey !important;
-}
-.btn_deactive:active{
-    background-color: black;
-}
-.buttons{
-    margin-right: 10px;
-}
-.my_name{
-    color: white;
-    font-size: 18px;
-    margin-right: 15px;
-}
-@media screen and (max-width: 768px) {
-    .mynavbar {
-        height: auto; 
-    }
-
-    .navbar-brand img {
-        height: auto;
-    }
-
-    .link_navbar {
-        margin-right: 10px; 
-    }
-
-    .btn_log {
-        font-size: 14px; 
-    }
-
-    .my_name {
-        display: none; 
-    }
-
-    .buttons {
-        margin-right: 0;
-    }
-} */
 .mynavbar {
     height: 80px;
     background-color: black;
@@ -81,7 +22,7 @@
 .nav a {
     color: white;
     text-decoration: none;
-    margin-right: 25px;
+    margin-left: 25px;
     width: auto;
 }
 
@@ -93,7 +34,7 @@
     cursor: pointer;
     padding: 8px 15px;
     font-size: 16px;
-    margin-right: 15px;
+    margin-left: 15px;
 }
 
 .btn_log:active {
@@ -115,7 +56,7 @@
 .my_name {
     color: white;
     font-size: 18px;
-    margin-right: 15px;
+    margin-left: 15px;
 }
 .brand-nav-container {
     display: flex;
@@ -130,7 +71,7 @@
 .buttons{
     display: flex;
     flex-direction: row;
-    
+
 }
 @media screen and (max-width: 1200px) {
 
@@ -170,7 +111,6 @@
     .btn_log,
     .btn_deactive {
         font-size: 14px;
-        margin-right: 15px;
         padding: 4px 8px;
     }
 

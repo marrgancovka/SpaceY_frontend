@@ -1,7 +1,6 @@
 .my_form{
     display: flex;
     flex-direction: column;
-    margin-top: 15%;
     align-items: center;
 }
 .my_items{
@@ -26,6 +25,15 @@
 .navigate{
     color:  white;
     font-size: 18px;
-    margin-bottom: 25%;
     cursor: pointer;
+}
+@media screen and (max-width: 600px) {
+    .my_items{
+        width: 100%;
+        max-width: 400px;
+    }
+    .my_form{
+        width: 100%;
+        margin: 0 8%;
+    }
 }
