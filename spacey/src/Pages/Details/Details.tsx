@@ -34,7 +34,7 @@ const DetailsPage: FC = () => {
       }, []);
 
     return(
-        <div className="body mydetails">
+        <div className="body ">
         <div className="block">
             <div className="mrg-2">
             <Breadcrumb items={breadcrumbsItems} className="lastitem"/>

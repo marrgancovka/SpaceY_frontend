@@ -6,6 +6,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 1% 5%;
+    margin-bottom: 20px;
 }
 
 .navbar-brand img {
