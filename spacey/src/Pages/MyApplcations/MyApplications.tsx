@@ -50,7 +50,7 @@ const MyApplicationsPage:FC = () => {
             console.log("Ошибка в получении заявок", error)
         }
     }
-    const filterClient = (event) => {
+    const filterClient = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         if (search_name!=''){
             const filteredApps = apps.filter(app => app.User.includes(search_name));
@@ -74,7 +74,7 @@ const MyApplicationsPage:FC = () => {
         getApps()
     },[])
     return(
-        <div className="block marg">
+        <div className="block ">
             <Breadcrumb items={breadcrumbsItems} className="lastitem"/>
             <h1 className="app_title">Заявки</h1>
             { role == "admin" && <div className="container_filter">

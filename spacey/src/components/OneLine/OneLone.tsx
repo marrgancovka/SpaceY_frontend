@@ -28,6 +28,7 @@ const OneLine:FC<Props> = ({ship, cosmodroms, index, deleteShip, saveShip, isNew
     const [cosmBegin, setCosmBegin] = useState(getIdCosm(ship.CosmodromBegin))
     const [cosmEnd, setCosmEnd] = useState(getIdCosm(ship.CosmodromEnd))
     const [date, setDate] = useState(ship.Date)
+    const [dateView, setDateView] = useState(ship.Date)
 
     function getIdCosm(name: string): number | undefined{
         const cosmodrom = cosmodroms.find(cosm => cosm.Title === name);
@@ -89,12 +90,22 @@ const OneLine:FC<Props> = ({ship, cosmodroms, index, deleteShip, saveShip, isNew
                              </select>    
                             </td>
                             <td>
-                            <DatePicker
+                            {/* <DatePicker
                                 selected={ parseISO(date) }
                                 onChange={(date)=>setDate(date.toISOString())}
                                 showTimeInput
                                 dateFormat="Pp" // Формат даты и времени, можно настроить по своему
-                            />
+                            /> */}
+                            <input
+                                type="datetime-local"
+                                className="input_search_app"
+                                value={dateView}
+                                onChange={(e)=>{const dt = new Date(e.target.value)
+                                    setDate(dt.toISOString())
+                                    setDateView(e.target.value)
+                                }}
+                              />
+
                                 </td>
                                 <td>
                                 <button

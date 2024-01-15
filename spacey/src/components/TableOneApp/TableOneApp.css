@@ -17,3 +17,8 @@
 .btnTrash:active{
     background-color: rgb(233, 233, 233);
 }
+.tableApp{
+    max-width: 90vw;
+    overflow-x: auto;
+    display: block;
+}

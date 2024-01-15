@@ -80,7 +80,7 @@ const TableOneApp:FC<Props> = ({ships, deleteApp, formHandler, getApps, isNewApp
 
     return(
         <>
-        <Table  className='tableDocs'>
+        <Table  className='tableApp'>
                 <thead>
                     <tr >
                         <th >№</th>

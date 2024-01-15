@@ -66,7 +66,7 @@ const ApplicationsPage:FC = () => {
         getApps()
     },[idApp])
     return(
-        <div className="block marg">
+        <div className="block mrg-2">
             <Breadcrumb items={breadcrumbsItems} className="lastitem"/>
             <h1 className="app_title">Заявка №{curId}</h1>
             <TableOneApp ships={flights}

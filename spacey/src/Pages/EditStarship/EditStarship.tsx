@@ -89,7 +89,7 @@ const EditStarshipPage:FC = () => {
         getShip()
     },[])
     return(
-        <div className="block marg">
+        <div className="block ">
             <Breadcrumb items={breadcrumbsItems} className="lastitem"/>
             <h1 className="app_title">Редактировать космолет</h1>
             <div className="edit_area">

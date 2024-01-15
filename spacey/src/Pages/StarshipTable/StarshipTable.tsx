@@ -29,7 +29,7 @@ const StarshipTablePage:FC = () => {
     { label: 'Корабли таблицей', link:`/starships/list` },
   ];
 
-  const handleFormSubmit = async (event) => {
+  const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
         const response = await axios.get(`/api/ships?search=${search_value}`, {headers: {Authorization: `Bearer ${token}`}});
@@ -91,7 +91,7 @@ const StarshipTablePage:FC = () => {
         getShips()
     },[])
     return(
-        <div className="block marg">
+        <div className="block ">
             <Breadcrumb items={breadcrumbsItems} className="lastitem"/>
             <h1 className="app_title">Космические корабли</h1>
             <div className="head_search">

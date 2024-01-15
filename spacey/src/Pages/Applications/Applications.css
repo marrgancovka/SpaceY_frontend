@@ -1,10 +1,4 @@
-.marg{
-    margin: 130px 10% 50px 10%;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    padding: 2%;
-}
+
 .app_title{
     margin-bottom: 30px;
 }

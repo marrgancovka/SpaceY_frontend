@@ -57,7 +57,6 @@
 .my_name {
     color: white;
     font-size: 18px;
-    margin-left: 15px;
 }
 .brand-nav-container {
     display: flex;
@@ -115,7 +114,4 @@
         padding: 4px 8px;
     }
 
-    .my_name {
-        margin: 10px 15px 0 px 0px;
-    }
 }
