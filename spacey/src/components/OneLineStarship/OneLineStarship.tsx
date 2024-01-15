@@ -32,7 +32,7 @@ const OneLineStarship:FC<Props> = ({item, index, deleteShip, editShip}) => {
                                 <td>{item.Title}</td>
                                 <td>{item.Rocket}</td>
                                 <td>{item.Type}</td>
-                                <td>{item.Description}</td>
+                                <td className="desc_table">{item.Description}</td>
                                 <td>
                                     <img src={item.Image_url} alt="" className="image_list"/>
                                 </td>

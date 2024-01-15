@@ -21,7 +21,7 @@ const StarshipTable:FC<Props> = ({ships, deleteShip, editShip}) => {
 
 
     return(
-        <Table className='tableApps'>
+        <Table className='tableApp'>
                     <thead>
                         <tr>
                             <th>№</th>

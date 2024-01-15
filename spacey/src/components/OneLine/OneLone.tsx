@@ -90,12 +90,6 @@ const OneLine:FC<Props> = ({ship, cosmodroms, index, deleteShip, saveShip, isNew
                              </select>    
                             </td>
                             <td>
-                            {/* <DatePicker
-                                selected={ parseISO(date) }
-                                onChange={(date)=>setDate(date.toISOString())}
-                                showTimeInput
-                                dateFormat="Pp" // Формат даты и времени, можно настроить по своему
-                            /> */}
                             <input
                                 type="datetime-local"
                                 className="input_search_app"

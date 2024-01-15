@@ -91,11 +91,12 @@ const StarshipTablePage:FC = () => {
         getShips()
     },[])
     return(
-        <div className="block ">
+        <div className="body">
+        <div className="block mrg-2">
             <Breadcrumb items={breadcrumbsItems} className="lastitem"/>
             <h1 className="app_title">Космические корабли</h1>
             <div className="head_search">
-            <button className="btnTrash" onClick={newShip}>Добавить новый</button>
+            <button className="btnTrash" style={{marginRight: "5px"}} onClick={newShip}>Создать</button>
             <Form className="search" method="GET" role="search" action="/starships" onSubmit={(event)=>handleFormSubmit(event)}>
                     <Form.Group className="" controlId="formBasicEmail">
                         <Form.Control 
@@ -111,7 +112,7 @@ const StarshipTablePage:FC = () => {
             <StarshipTable ships={ships} deleteShip={deleteShip} editShip={editShip}/>
             
             
-           
+            </div>
         </div>
     )
 }

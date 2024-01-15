@@ -89,10 +89,15 @@ const EditStarshipPage:FC = () => {
         getShip()
     },[])
     return(
-        <div className="block ">
+        <div className="body">
+        <div className="block mrg-2">
             <Breadcrumb items={breadcrumbsItems} className="lastitem"/>
             <h1 className="app_title">Редактировать космолет</h1>
             <div className="edit_area">
+                
+                <div className="edit_image">
+                    <img className="image_edit" src={img} alt="" />
+                </div>
                 <div className="edit_text">
                     <input type="text" value={ship?.Title} placeholder="Введите название космолета" className="edit_input mb-15" onChange={(event)=>{
                         setShip({
@@ -127,13 +132,9 @@ const EditStarshipPage:FC = () => {
                     { !isSave && <button className="edit_save" onClick={saveEdit}>Сохранить</button> }
                     { isSave && <div className="isSave">Сохранить</div> }
                 </div>
-                <div className="edit_image">
-                    <img className="image_edit" src={img} alt="" />
-                </div>
             </div>
-            
-             
-        </div>
+            </div>
+            </div>
     )
 }
 

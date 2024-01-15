@@ -23,7 +23,7 @@ const TableApplications:FC<Props> = ({apps, role, getApps}) => {
 
 
     return(
-        <Table className='tableApps'>
+        <Table className='tableApp'>
                     <thead>
                         <tr>
                             <th style={{ width: '5%' }}>№</th>

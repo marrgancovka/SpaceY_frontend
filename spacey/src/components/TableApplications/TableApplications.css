@@ -7,3 +7,11 @@
 .mr{
     margin-right: 10px;
 }
+.deactive_admin{
+    cursor: not-allowed;
+    color: grey;
+    border: solid 1px grey;
+}
+.deactive_admin:active{
+    background-color: white;
+}

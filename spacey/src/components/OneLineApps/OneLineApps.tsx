@@ -35,7 +35,7 @@ const OneLineApps:FC<Props> = ({item,role, getApps}) => {
 
     const cancel = async (id: number) =>{
         // setStatus("cancel")
-        // setDate((new Date()).toISOString())
+        setDate((new Date()).toISOString())
         // setAdmin(name)
         try {
             await axios.put('/api/application/admin', {"id": id, "status": "cancel"},{headers: {"Authorization": `Bearer ${token}`}})
@@ -47,7 +47,7 @@ const OneLineApps:FC<Props> = ({item,role, getApps}) => {
     }
     const ok = async (id: number) =>{
         // setStatus("accepted")
-        // setDate((new Date()).toISOString())
+        setDate((new Date()).toISOString())
         // setAdmin(name)
         try {
             await axios.put('/api/application/admin', {"id": id, "status": "accepted"},{headers: {"Authorization": `Bearer ${token}`}})
@@ -83,8 +83,8 @@ const OneLineApps:FC<Props> = ({item,role, getApps}) => {
                                     <button className="btnTrash" onClick={()=> cancel(item.ID)}>Отменить</button>
                                 </td> : role=="admin" ?  
                                     <td>
-                                        <button className="btnTrash mr btn_deactive">Принять</button>
-                                        <button className="btnTrash btn_deactive" >Отменить</button>
+                                        
+                                        <span>-</span>
                                     </td> : <></> }
                                 <td>
                                     <button className="btnTrash" onClick={()=>toApp(item.ID)}>Открыть</button>

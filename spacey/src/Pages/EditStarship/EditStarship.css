@@ -8,7 +8,7 @@
     
 }
 .edit_image{
-    margin-left: 50px;
+    margin-right: 50px;
 }
 .edit_input{
     border: 1px solid grey;
@@ -16,7 +16,8 @@
     padding: 8px;
     font-size: 18px;
     min-height: 50px;
-    width: 500px;
+    max-width: 500px;
+    min-width: 400px;
 
 }
 .mb-15{
@@ -32,17 +33,21 @@
 .edit_save{
     width: auto;
     margin: 0 auto;
-    background-color: white;
-    border: 1px solid grey;
+    background-color: black;
+    border: 1px solid white;
     border-radius: 8px;
     font-size: 18px;
     padding: 0 20px;
+    color: white;
+    transition-duration: 0.3s;
 }
 .edit_save:hover{
-    background-color: rgb(241, 241, 241);
+    background-color: rgb(36, 36, 36);
 }
 .edit_save:active{
-    background-color: rgb(216, 216, 216);
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border: 1px solid black;
 }
 .isSave{
     cursor:not-allowed;
@@ -54,4 +59,25 @@
     font-size: 18px;
     color: grey;
     padding: 0 20px;
+}
+@media screen and (max-width: 1200px) {
+
+    .edit_area{
+        flex-direction: column;
+        
+    }
+    .image_edit{
+        max-width: 500px;
+        width: 100%;
+        max-height: 600px;
+        overflow: hidden;
+    }
+    .edit_image{
+        margin: 0;
+    }
+    .edit_input{
+        max-width: 500px;
+        min-width: 0;
+        width: 100%;
+    }
 }

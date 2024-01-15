@@ -74,13 +74,14 @@ const MyApplicationsPage:FC = () => {
         getApps()
     },[])
     return(
-        <div className="block ">
+        <div className="body">
+        <div className="block mrg-2">
             <Breadcrumb items={breadcrumbsItems} className="lastitem"/>
             <h1 className="app_title">Заявки</h1>
             { role == "admin" && <div className="container_filter">
-                <Form onSubmit={(event)=>filterClient(event)}>
+                <Form onSubmit={(event)=>filterClient(event)} className="name_client">
                 <input
-                className="input_search_app"
+                className="input_search_app input_name"
                     type="text"
                     placeholder="Поиск по имени клиента"
                     value={search_name}
@@ -92,34 +93,35 @@ const MyApplicationsPage:FC = () => {
                 {/* Инпут как выпадающий список для фильтрации по статусам */}
                 <select value={search_status} 
                 onChange={(e) => {dispatch(setStatus(e.target.value))}}
-                className="input_search_app"
+                className="input_search_app grid_status"
                 >
                   <option value="">Все статусы</option>
                   <option value="formated">Сформирована</option>
                   <option value="cancel">Отменена</option>
                   <option value="accepted">Завершена</option>
                 </select>
-                {/* Инпуты для выбора даты в формате гггг-мм-дд */}
-                <label className="mr-8">Начальная дата:</label>
+                <label className="mr-8 grid-label-start" >Начальная дата:</label>
                 <input
                   type="date"
-                className="input_search_app"
+                className="input_search_app grid-date-start"
                   value={search_date_start}
                   onChange={(e) => {dispatch(setDate(e.target.value))}}
                   />
 
-                {/* Инпуты для выбора даты в формате гггг-мм-дд */}
-                <label className="mr-8">Конечная дата:</label>
+                <label className="mr-8 grid-label-end">Конечная дата:</label>
                     <input
                       type="date"
-                className="input_search_app"
+                className="input_search_app grid-date-end"
                      value={search_date_end}
                      onChange={(e) => {dispatch(setDateEnd(e.target.value))}}
                      />
-                <button className="btnTrash" onClick={filterApps}>Применить</button>
-                <button className="btnTrash" onClick={clean}>Очистить</button>
+                <div className="grid-buttons">
+                <button className="btnTrash" style={{marginBottom: "10px"}} onClick={filterApps}>Применить</button>
+                <button className="btnTrash" style={{marginBottom: "10px"}} onClick={clean}>Очистить</button>
+                </div>
             </div>}
             <TableApplications apps={apps} role={role} getApps={getApps}/>
+        </div>
         </div>
     )
 }
