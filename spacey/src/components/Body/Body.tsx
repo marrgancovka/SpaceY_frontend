@@ -45,7 +45,7 @@ const Body: FC = () => {
 
 
 
-    const handleFormSubmit = async (event) => {
+    const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         try {
             const response = await axios.get(`api/ships?search=${search_value}`, {headers: {Authorization: `Bearer ${token}`}});
@@ -57,34 +57,6 @@ const Body: FC = () => {
     const breadcrumbsItems = [
         { label: 'Корабли', link:'' } // Link to the current page
       ];
-    if (ships.length==0){
-        return (
-            <div className="body">
-            <div className="block">
-                <div className="mytop">
-                <Breadcrumbs items={breadcrumbsItems}/>
-                <Form className="search" method="GET" role="search" action="/starships" onSubmit={(event)=>handleFormSubmit(event)}>
-                    <Form.Group className="" controlId="formBasicEmail">
-                        <Form.Control 
-                        type="search" 
-                        placeholder="Поиск по названию" 
-                        className="myinput" 
-                        name="search" 
-                        autoComplete="off" 
-                        value={search_value} onChange={(e) => {dispatch(setSeachValue(e.target.value))}}/>
-                    </Form.Group>
-                    {/* <Button variant="light" type="submit" className="btn_submit">
-                        <img src={search_img} alt="" className="search_image"/>
-                    </Button> */}
-                </Form>
-                </div>
-                <div className="card_container notFound">
-                    Ничего не найдено :(
-                </div>
-            </div>
-            </div>
-        )
-    }
     return(
         <div className="body">
         <div className="block">
@@ -105,11 +77,14 @@ const Body: FC = () => {
                 </Button> */}
             </Form>
             </div>
-            <div className="card_container">
+            {ships.length!=0 && <div className="card_container">
                 {ships.map((item) => (
                     <Card data={item}/>
                 ))}
-            </div>
+            </div>}
+            {ships.length==0 && <div className="card_container notFound">
+                    Ничего не найдено :(
+                </div>}
         </div>
         </div>
     )
