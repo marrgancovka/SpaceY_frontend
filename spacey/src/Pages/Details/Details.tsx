@@ -36,6 +36,7 @@ const DetailsPage: FC = () => {
     return(
         <div className="body mydetails">
         <div className="block">
+            <div className="mrg-2">
             <Breadcrumb items={breadcrumbsItems} className="lastitem"/>
             <div className="mycontainer">
                 <div className="photo"> <img className="image" src={ship.Image_url} alt=""/></div>
@@ -62,6 +63,7 @@ const DetailsPage: FC = () => {
                         <Link to="/starships" className="btn_back">Вернуться к списку</Link>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
         </div>

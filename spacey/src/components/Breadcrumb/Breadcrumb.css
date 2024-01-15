@@ -11,10 +11,10 @@
 }
 
 .breadcrumbs{
-    margin-left: 80px;
+    /* margin-left: 80px; */
     margin-bottom: 1%;
     margin-top: 2%;
-    width: auto;
+    width: 100%;
 }
 
 .breadcrumb-separator{

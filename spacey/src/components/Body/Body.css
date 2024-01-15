@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: start;
     justify-content: space-between;
-    padding: 0 1%;
+    padding: 0 2%;
     margin-top: 1%;
 }
 .notFound{
@@ -12,4 +12,31 @@
     align-items: center;
     font-size: 24px;
     margin-bottom: 3%;
+}
+.search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.myinput {
+    width: 300px;
+    height: 35px;
+    border-radius: 5px;
+    border: solid 1px #acacacd7;
+    padding: 0 10px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+input::placeholder{
+    font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+    .myinput{
+        width: 100%;
+    }
+    .breadcrumbs{
+        margin-left: 0;
+    }
 }

@@ -63,7 +63,7 @@ const Body: FC = () => {
             <div className="mytop">
             <Breadcrumbs items={breadcrumbsItems}/>
             <Form className="search" method="GET" role="search" action="/starships" onSubmit={(event)=>handleFormSubmit(event)}>
-                <Form.Group className="" controlId="formBasicEmail">
+                <Form.Group controlId="formBasicEmail">
                     <Form.Control 
                     type="search" 
                     placeholder="Поиск по названию" 
