@@ -37,10 +37,15 @@ const MyApplicationsPage:FC = () => {
 
     const getApps = async () => {
         try {
-            console.log(token, idApp)
-            const resp = await axios.get(`/api/applications?status=${search_status}&date=${search_date_start}&date_end=${search_date_end}`, {headers: {"Authorization": `Bearer ${token}`}})
-            setApps(resp.data.data)
-            setAppsView(resp.data.data)
+            if (search_date_end=="" && search_date_start=="" && search_status==""){
+                const resp = await axios.get(`/api/applications`, {headers: {"Authorization": `Bearer ${token}`}})
+                setApps(resp.data.data)
+                setAppsView(resp.data.data)
+            } else{
+                const resp = await axios.get(`/api/applications?status=${search_status}&date=${search_date_start}&date_end=${search_date_end}`, {headers: {"Authorization": `Bearer ${token}`}})
+                setApps(resp.data.data)
+                setAppsView(resp.data.data)
+            }
         } catch (error) {
             console.log("Ошибка в получении заявок", error)
         }
@@ -76,8 +81,9 @@ const MyApplicationsPage:FC = () => {
     useEffect(() => {
         if (role=="client"){
             clean()
-        }
-        getApps()
+            getApps()
+        } else{
+            getApps()
         const intervalId = setInterval(() => {
             getApps();
         }, 3000); // 5000 миллисекунд (5 секунд) - можете установить свое значение
@@ -85,6 +91,7 @@ const MyApplicationsPage:FC = () => {
         // Очистка интервала при размонтировании компонента
         return () => clearInterval(intervalId);
         console.log('useEffect')
+        }
     },[])
     useEffect(()=>{
         filterClient(search_name)
